@@ -404,6 +404,7 @@ footer{background:var(--black);border-top:1px solid var(--lineW);padding:22px cl
   max-width:1240px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap
 }
 .fcopy{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(247,243,236,.18)}
+  .fcopy2{font-size:.72rem;letter-spacing:.1em;color:rgba(247,243,236,.18)}
 .fbrand{
   font-family:'Playfair Display',serif;font-size:.9rem;font-weight:700;color:var(--gold);
   letter-spacing:.08em;text-transform:uppercase
@@ -469,68 +470,10 @@ footer{background:var(--black);border-top:1px solid var(--lineW);padding:22px cl
   body{cursor:auto}
   #c,#cr{display:none}
 }
-  #previewModal{
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.9);
-display:flex;
-align-items:center;
-justify-content:center;
-z-index:999999;
-}
 
-.previewBox{
-background:#111;
-border-radius: 25px;
-border:1px solid #c9963a;
-padding:40px;
-text-align:center;
-max-width:420px;
-color:white;
-font-family:Outfit,sans-serif;
-}
-
-.previewBox h2{
-color:#c9963a;
-margin-bottom:10px;
-}
-
-.timer{
-font-size:22px;
-margin:20px 0;
-color:#c9963a;
-font-weight:bold;
-}
-
-.previewBox button{
-padding:12px 24px;
-background:#c9963a;
-border:none;
-cursor:pointer;
-font-weight:bold;
-}
 </style>
 </head>
-  <div id="previewModal">
-  <div class="previewBox">
-
-    <h2>PREVISUALIZACIÓN</h2>
-
-    <p>
-    Esta es una versión de revisión del sitio web.<br>
-    Acceso temporal para evaluación.
-    </p>
-
-    <div class="timer">
-      Disponible durante:  
-      <span id="countdown">--:--:--</span>
-    </div>
-
-    <button onclick="cerrarPreview()">Entrar al sitio</button>
-<br> </br>
-<h2 style="color: rgb(251, 253, 254);font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;font-size: 15px;text-shadow: 0 2px 7px rgb(4, 104, 255);">IGW - SERVICIOS</h2>
-  </div>
-</div>
+  
 <body>
 
 <div id="c"></div>
@@ -859,7 +802,11 @@ Promover que la actividad minera contribuya al crecimiento económico y al desar
   <div class="foot">
     <span class="fcopy">© 2026 · Sitio institucional</span>
     <span class="fbrand">Fernando Quilpatay</span>
-    <span class="fcopy">IGW - SERVICIOS IGLESIA.</span>
+    <a 
+href="https://wa.me/5492646246834?text=Hola%20me%20interesaria%20charlar%20por%20una%20pagina%20web" target="_blank" class="fcopy2"
+>
+Diseño web por <strong style="color: rgba(0, 255, 255, 0.612);">IGW SERVICIOS  · IGLESIA</strong>
+</a>
   </div>
 </footer>
 
@@ -947,48 +894,6 @@ document.getElementById('mclose').addEventListener('click',closeModal);
 modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
 </script>
-<script>
 
-const expiracion = new Date("2026-03-17T19:00:00");
-
-function actualizarContador(){
-
-const ahora = new Date();
-const diferencia = expiracion - ahora;
-
-if(diferencia <= 0){
-
-document.getElementById("countdown").innerHTML = "Expirado";
-
-document.body.innerHTML = `
-<div style="display:flex;align-items:center;justify-content:center;height:100vh;background:#000;color:#fff;font-family:sans-serif;text-align:center;padding:20px;">
-<div>
-<h2 style="color:#c9963a;">Previsualización finalizada</h2>
-<p>El acceso temporal a esta demostración ha expirado.</p>
-</div>
-</div>
-`;
-
-return;
-
-}
-
-const horas = Math.floor(diferencia / (1000*60*60));
-const minutos = Math.floor((diferencia % (1000*60*60)) / (1000*60));
-const segundos = Math.floor((diferencia % (1000*60)) / 1000);
-
-document.getElementById("countdown").textContent =
-`${horas.toString().padStart(2,'0')}:${minutos.toString().padStart(2,'0')}:${segundos.toString().padStart(2,'0')}`;
-
-}
-
-setInterval(actualizarContador,1000);
-actualizarContador();
-
-function cerrarPreview(){
-document.getElementById("previewModal").style.display="none";
-}
-
-</script>
 </body>
 </html>
